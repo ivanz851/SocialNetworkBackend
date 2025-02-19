@@ -1,0 +1,72 @@
+@startuml
+title services ER diagram
+
+entity "User" {
+    userId : int 
+    phone: str
+    password: str
+    createdAt : timestamp
+    updatedAt : timestamp
+}
+
+entity "UserData" {
+    userId : int
+    name: str
+    surname: str
+    email : str
+    birthDate: date
+    sex : str enum
+    education: str
+    status : str
+}
+
+entity "Content" {
+    contentId : int
+    userId : int
+    text: str
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity "Post" {
+    postId : int
+    contentId : int
+    
+}
+
+entity "Comment" {
+    commentId : int
+    contentId : int
+}
+
+entity "ContentStats" {
+    contentStatsId : int
+    viewsCnt : int
+    likesCnt : int
+    commentsCnt : int
+}
+
+entity "ContentUpdate" {
+    contentUpdateId : int
+    userId : int
+    contentUpdateType : str enum
+    createdAt : timestamp
+}
+
+entity "UserStats" {
+    userStatsId : int
+    likesCnt : int
+}
+
+User -> UserData : "updates"
+User -> Content : "updates"
+Content -- Post
+Content -- Comment 
+Post -> Comment : "contains"
+Comment -> Comment : "contains"
+Content -- ContentStats
+User -> ContentUpdate : "updates"
+ContentUpdate -> ContentStats : "updates" 
+ContentUpdate -> UserStats : "updates"
+User -- UserStats
+@enduml
