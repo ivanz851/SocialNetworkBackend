@@ -1,0 +1,35 @@
+specification {
+  element actor {
+    style {
+      shape person
+      color secondary
+    }
+  }
+  element system
+}
+
+model {
+  apiGateway = system 'API Gateway' {
+    description ''
+  }
+  userService = system 'User Service' {
+    description ''
+  }
+  database = system 'User database' {
+    description ''
+  }
+  messageBroker = system 'Kafka' {
+    description ''
+  }
+
+  apiGateway -> userService 'маршрутизирует запросы в сервис пользователей'
+  userService -> database 'читает и записывает информацию о пользователях'
+  userService -> messageBroker 'отправляет сообщения об изменениях пользовательской информации'
+}
+
+views {
+  view index {
+    title 'Архитектура Statistics Service'
+    include *
+  }
+}

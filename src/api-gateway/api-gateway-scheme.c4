@@ -1,0 +1,39 @@
+specification {
+  element actor {
+    style {
+      shape person
+      color secondary
+    }
+  }
+  element system
+}
+
+model {
+  user = actor 'Пользователь' {
+    description ''
+  }
+  apiGateway = system 'API gateway' {
+    description ''
+  }
+  contentService = system 'Content service' {
+    description ''
+  }
+  statsService = system 'Statistics service' {
+    description ''
+  }
+  userService = system 'User service' {
+    description ''
+  }
+
+  user -> apiGateway 'отправляет запросы'
+  apiGateway -> contentService 'маршрутизирует в сервис информации о постах и комментариях'
+  apiGateway -> statsService 'маршрутизирует в сервис статистики'
+  apiGateway -> userService 'маршрутизирует в сервис пользовательской информации'
+}
+
+views {
+  view index {
+    title 'Схема API Gateway'
+    include *
+  }
+}
