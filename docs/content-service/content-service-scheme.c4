@@ -1,0 +1,35 @@
+specification {
+  element actor {
+    style {
+      shape person
+      color secondary
+    }
+  }
+  element system
+}
+
+model {
+  apiGateway = system 'API Gateway' {
+    description ''
+  }
+  contentService = system 'Content Service' {
+    description ''
+  }
+  database = system 'Content database' {
+    description ''
+  }
+  messageBroker = system 'Kafka' {
+    description ''
+  }
+
+  apiGateway -> contentService 'маршрутизирует запросы в сервис информации о постах и комментариях'
+  contentService -> database 'читает и записывает информацию о постах и комментариях'
+  contentService -> messageBroker 'отправляет сообщения о действиях с постами и комментариями'
+}
+
+views {
+  view index {
+    title 'Архитектура Content Service'
+    include *
+  }
+}

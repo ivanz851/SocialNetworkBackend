@@ -1,0 +1,35 @@
+specification {
+  element actor {
+    style {
+      shape person
+      color secondary
+    }
+  }
+  element system
+}
+
+model {
+  apiGateway = system 'API Gateway' {
+    description ''
+  }
+  statsService = system 'Statistics Service' {
+    description ''
+  }
+  database = system 'Statistics database' {
+    description ''
+  }
+  messageBroker = system 'Kafka' {
+    description ''
+  }
+
+  apiGateway -> statsService 'маршрутизирует запросы в сервис статистики'
+  statsService -> database 'читает и записывает статистики'
+  statsService -> messageBroker 'отправляет сообщения об изменении числа лайков, просмотров, комментариев'
+}
+
+views {
+  view index {
+    title 'Архитектура Statistics Service'
+    include *
+  }
+}
