@@ -1,0 +1,20 @@
+services:
+  api-gateway:
+    image: openjdk:21-jdk-slim
+    container_name: api-gateway
+    volumes:
+      - ./target/api-gateway-0.0.1-SNAPSHOT.jar:/app/api-gateway.jar
+    working_dir: /app
+    command: ["java", "-jar", "api-gateway.jar"]
+    ports:
+      - "9000:9000"
+    networks:
+      - socialnetworkbackend-net
+    environment:
+      - USER_SERVICE_URL=http://user-service:8081
+      - GRPC_CLIENT_CONTENT_SERVICE_ADDRESS=dns:///content-service:9090
+      - GRPC_CLIENT_CONTENT_SERVICE_NEGOTIATION_TYPE=plaintext
+
+networks:
+  socialnetworkbackend-net:
+    external: true
