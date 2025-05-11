@@ -1,0 +1,17 @@
+com\ivanz\socialnetworkbackend\user\dto\UserLoginRequest.class
+com\ivanz\socialnetworkbackend\user\model\User.class
+com\ivanz\socialnetworkbackend\user\controller\UserController.class
+com\ivanz\socialnetworkbackend\user\dto\UserDto.class
+com\ivanz\socialnetworkbackend\user\security\SecurityConfig.class
+com\ivanz\socialnetworkbackend\user\service\UserService.class
+com\ivanz\socialnetworkbackend\user\security\JwtService.class
+com\ivanz\socialnetworkbackend\user\dto\UserRegisterRequest.class
+com\ivanz\socialnetworkbackend\user\dto\ProfileUpdateRequest.class
+com\ivanz\socialnetworkbackend\user\exception\AuthRuntimeException.class
+com\ivanz\socialnetworkbackend\user\repository\UserRepository.class
+com\ivanz\socialnetworkbackend\user\dto\AuthResponse.class
+com\ivanz\socialnetworkbackend\user\dto\ApiError.class
+com\ivanz\socialnetworkbackend\user\exception\GlobalExceptionHandler.class
+com\ivanz\socialnetworkbackend\user\exception\NotFoundException.class
+com\ivanz\socialnetworkbackend\user\UserServiceApplication.class
+com\ivanz\socialnetworkbackend\user\exception\ConflictException.class

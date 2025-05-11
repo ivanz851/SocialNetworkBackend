@@ -1,0 +1,38 @@
+version: '4'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_user
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: user-service-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    networks:
+      - socialnetworkbackend-net
+
+  user-service:
+    image: openjdk:21-jdk-slim
+    container_name: user-service
+    volumes:
+      - ./target/user-service-0.0.1-SNAPSHOT.jar:/app/user-service.jar
+    working_dir: /app
+    command: [ "java", "-jar", "user-service.jar" ]
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/user-service-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - socialnetworkbackend-net
+
+networks:
+  socialnetworkbackend-net:
+    external: true
