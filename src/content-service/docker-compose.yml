@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_content
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: content-service-db
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    networks:
+      - socialnetworkbackend-net
+
+  content-service:
+    image: openjdk:21-jdk-slim
+    container_name: content_service
+    volumes:
+      - ./target/content-service-0.0.1-SNAPSHOT.jar:/app/content-service.jar
+    working_dir: /app
+    command: ["java", "-jar", "content-service.jar"]
+    ports:
+      - "8082:8082"  # REST
+      - "9090:9090"  # gRPC
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/content-service-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_APPLICATION_NAME: content-service
+      GRPC_SERVER_PORT: 9090
+    networks:
+      - socialnetworkbackend-net
+
+networks:
+  socialnetworkbackend-net:
+    external: true
