@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package post;
+
+import "google/protobuf/empty.proto";
+
+option java_multiple_files = true;
+option java_package = "com.ivanz.socialnetworkbackend.content.grpc";
+option java_outer_classname = "PostProto";
+
+service PostService {
+  rpc CreatePost (CreatePostRequest) returns (PostResponse);
+  rpc GetPostById (GetPostRequest) returns (PostResponse);
+  rpc DeletePost (GetPostRequest) returns (google.protobuf.Empty);
+  rpc UpdatePost (UpdatePostRequest) returns (PostResponse);
+  rpc GetAllPosts (PaginatedRequest) returns (PaginatedPostResponse);
+}
+
+message CreatePostRequest {
+  string title = 1;
+  string content = 2;
+  int64 authorId = 3;
+  bool isPrivate = 4;
+  repeated string tags = 5;
+}
+
+message UpdatePostRequest {
+  int64 id = 1;
+  string title = 2;
+  string content = 3;
+  bool isPrivate = 4;
+  repeated string tags = 5;
+  int64 authorId = 6;
+}
+
+message GetPostRequest {
+  int64 id = 1;
+}
+
+message PaginatedRequest {
+  int32 page = 1;
+  int32 size = 2;
+}
+
+message PostResponse {
+  int64 id = 1;
+  string title = 2;
+  string content = 3;
+  int64 authorId = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+  bool isPrivate = 7;
+  repeated string tags = 8;
+}
+
+message PaginatedPostResponse {
+  repeated PostResponse posts = 1;
+  int32 totalPages = 2;
+  int64 totalElements = 3;
+}

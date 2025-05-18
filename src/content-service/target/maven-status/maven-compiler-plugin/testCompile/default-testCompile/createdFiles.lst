@@ -1,0 +1,3 @@
+com\ivanz\socialnetworkbackend\content\grpc\PostServiceGrpcImplTest.class
+com\ivanz\socialnetworkbackend\content\service\PostServiceTest.class
+com\ivanz\socialnetworkbackend\content\repository\PostRepositoryTest.class
