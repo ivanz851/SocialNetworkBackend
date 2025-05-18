@@ -1,5 +1,6 @@
 com\ivanz\socialnetworkbackend\user\dto\UserLoginRequest.class
 com\ivanz\socialnetworkbackend\user\model\User.class
+com\ivanz\socialnetworkbackend\user\security\JwtAuthFilter.class
 com\ivanz\socialnetworkbackend\user\controller\UserController.class
 com\ivanz\socialnetworkbackend\user\dto\UserDto.class
 com\ivanz\socialnetworkbackend\user\security\SecurityConfig.class

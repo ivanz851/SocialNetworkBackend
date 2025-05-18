@@ -52,6 +52,24 @@ public class UserService {
         return new AuthResponse(token);
     }
 
+    @Transactional(readOnly = true)
+    public UserDto getProfile(Long userId) {
+        User user = userRepo.findById(userId)
+                .orElseThrow(() -> new NotFoundException("User not found"));
+
+        return new UserDto(
+                user.getId(),
+                user.getLogin(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getBirthDate(),
+                user.getEmail(),
+                user.getPhone(),
+                user.getCreatedAt(),
+                user.getUpdatedAt()
+        );
+    }
+
     @Transactional
     public void updateProfile(Long userId, ProfileUpdateRequest p) {
         User user = userRepo.findById(userId)
