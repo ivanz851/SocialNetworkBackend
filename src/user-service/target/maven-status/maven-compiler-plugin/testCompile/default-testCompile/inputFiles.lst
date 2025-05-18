@@ -1,3 +1,13 @@
-C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\TestUserServiceApplication.java
-C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\UserServiceApplicationTests.java
-C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\TestcontainersConfiguration.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\security\JwtAuthFilterTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\dto\ApiErrorTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\exception\CustomExceptionsTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\dto\ProfileUpdateRequestValidationTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\dto\UserDtoTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\dto\AuthResponseTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\service\UserServiceTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\controller\UserControllerTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\repository\UserRepositoryTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\exception\GlobalExceptionHandlerTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\security\JwtServiceTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\dto\UserLoginRegisterValidationTest.java
+C:\Users\test\user\study\hse_3_course\Java\IndividualProject\SocialNetworkBackend\services\user-service\src\test\java\com\ivanz\socialnetworkbackend\user\security\SecurityConfigTest.java

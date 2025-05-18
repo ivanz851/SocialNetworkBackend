@@ -1,3 +1,13 @@
-com\ivanz\socialnetworkbackend\user\TestUserServiceApplication.class
-com\ivanz\socialnetworkbackend\user\UserServiceApplicationTests.class
-com\ivanz\socialnetworkbackend\user\TestcontainersConfiguration.class
+com\ivanz\socialnetworkbackend\user\dto\AuthResponseTest.class
+com\ivanz\socialnetworkbackend\user\exception\GlobalExceptionHandlerTest.class
+com\ivanz\socialnetworkbackend\user\security\JwtServiceTest.class
+com\ivanz\socialnetworkbackend\user\exception\CustomExceptionsTest.class
+com\ivanz\socialnetworkbackend\user\dto\ProfileUpdateRequestValidationTest.class
+com\ivanz\socialnetworkbackend\user\controller\UserControllerTest.class
+com\ivanz\socialnetworkbackend\user\repository\UserRepositoryTest.class
+com\ivanz\socialnetworkbackend\user\dto\ApiErrorTest.class
+com\ivanz\socialnetworkbackend\user\security\SecurityConfigTest.class
+com\ivanz\socialnetworkbackend\user\service\UserServiceTest.class
+com\ivanz\socialnetworkbackend\user\dto\UserDtoTest.class
+com\ivanz\socialnetworkbackend\user\security\JwtAuthFilterTest.class
+com\ivanz\socialnetworkbackend\user\dto\UserLoginRegisterValidationTest.class

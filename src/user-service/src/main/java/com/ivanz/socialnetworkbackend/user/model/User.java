@@ -26,7 +26,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // immutable fields
     @Column(nullable = false, unique = true)
     private String login;
 
@@ -36,7 +35,6 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    // mutable fields
     private String firstName;
     private String lastName;
     private LocalDate birthDate;
