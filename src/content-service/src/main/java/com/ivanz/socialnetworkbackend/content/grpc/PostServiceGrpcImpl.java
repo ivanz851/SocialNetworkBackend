@@ -3,10 +3,15 @@ package com.ivanz.socialnetworkbackend.content.grpc;
 import com.google.protobuf.Empty;
 import com.ivanz.socialnetworkbackend.content.model.Post;
 import com.ivanz.socialnetworkbackend.content.service.PostService;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @GrpcService
 @RequiredArgsConstructor
@@ -29,11 +34,24 @@ public class PostServiceGrpcImpl extends PostServiceGrpc.PostServiceImplBase {
     }
 
     @Override
-    public void getPostById(GetPostRequest request, StreamObserver<PostResponse> responseObserver) {
-        Post post = postService.getPostById(request.getId());
-        responseObserver.onNext(toGrpc(post));
-        responseObserver.onCompleted();
+    public void getPostById(GetPostRequest request,
+                            StreamObserver<PostResponse> responseObserver) {
+        try {
+            Post post = postService.getPostById(request.getId());
+            responseObserver.onNext(toGrpc(post));
+            responseObserver.onCompleted();
+        } catch (ResponseStatusException ex) {
+            Status status = (ex.getStatusCode() == HttpStatus.NOT_FOUND)
+                    ? Status.NOT_FOUND
+                    : Status.INTERNAL;
+            responseObserver.onError(
+                    status.withDescription(ex.getReason()).asRuntimeException());
+        } catch (Exception ex) {
+            responseObserver.onError(
+                    Status.INTERNAL.withDescription(ex.getMessage()).asRuntimeException());
+        }
     }
+
 
     @Override
     public void updatePost(UpdatePostRequest request, StreamObserver<PostResponse> responseObserver) {
@@ -76,10 +94,12 @@ public class PostServiceGrpcImpl extends PostServiceGrpc.PostServiceImplBase {
                 .setTitle(post.getTitle())
                 .setContent(post.getContent())
                 .setAuthorId(post.getAuthorId())
-                .setCreatedAt(post.getCreatedAt().toString())
-                .setUpdatedAt(post.getUpdatedAt().toString())
+                .setCreatedAt(
+                        post.getCreatedAt() != null ? post.getCreatedAt().toString() : "")
+                .setUpdatedAt(
+                        post.getUpdatedAt() != null ? post.getUpdatedAt().toString() : "")
                 .setIsPrivate(post.isPrivate())
-                .addAllTags(post.getTags())
+                .addAllTags(post.getTags() != null ? post.getTags() : List.of())
                 .build();
     }
 }
